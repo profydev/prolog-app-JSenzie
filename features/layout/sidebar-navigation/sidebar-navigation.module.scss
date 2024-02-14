@@ -22,6 +22,10 @@
       .logo {
         width: 1.4375rem;
       }
+
+      .collapseMenuItem img {
+        transform: scaleX(-1);
+      }
     }
   }
 }
