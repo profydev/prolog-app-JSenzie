@@ -16,7 +16,7 @@ const languageNames = {
   [ProjectLanguage.python]: "Python",
 };
 
-const statusNames = {
+export const statusNames = {
   [ProjectStatus.info]: "Stable",
   [ProjectStatus.warning]: "Warning",
   [ProjectStatus.error]: "Critical",
