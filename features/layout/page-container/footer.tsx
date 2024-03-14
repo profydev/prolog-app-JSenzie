@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./page-container.module.scss";
 import Link from "next/link";
+import packageJson from "../../../package.json";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
         <div className={styles.footerInner}>
-          <div className={styles.version}>Version: 14.5.1</div>
+          <div className={styles.version}>Version: {packageJson.version}</div>
           <div className={styles.footerLinks}>
             <Link className={styles.footerLink} href={"#"}>
               Docs
