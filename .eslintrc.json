@@ -11,6 +11,12 @@
   },
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "no-restricted-imports": [
       "error",
       {
