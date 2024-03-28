@@ -45,3 +45,28 @@
     transform: rotate(360deg);
   }
 }
+
+.error {
+  background-color: #fffbfa;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #fda29b;
+  display: flex;
+  color: #d92d20;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  align-items: center;
+}
+
+.errorMessage {
+  display: flex;
+  gap: 12px;
+}
+
+.tryAgain {
+  gap: 12px;
+  display: flex;
+}
