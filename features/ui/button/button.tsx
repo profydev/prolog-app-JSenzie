@@ -24,18 +24,22 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   size?: ButtonSize;
   color?: ButtonColor;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: () => void;
+  className?: string;
 }
 
 export function Button({
   children,
   size = ButtonSize.md,
   color = ButtonColor.primary,
+  onClick,
+  className,
 }: ButtonProps) {
   return (
-    <div>
+    <div className={classNames(className)}>
       <button
         className={classNames(styles.button, styles[size], styles[color])}
+        onClick={onClick}
       >
         {children}
       </button>
