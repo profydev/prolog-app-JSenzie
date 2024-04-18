@@ -70,6 +70,14 @@
   }
 }
 
+.menuButton button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+
 .menuIcon {
   display: block;
   width: space.$s10;
