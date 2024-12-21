@@ -1,0 +1,100 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.checkboxWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.checkbox {
+  appearance: none;
+  margin: 0;
+  position: relative;
+  border: 1px solid color.$gray-300;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: white;
+
+  &.sm {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.md {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: white;
+    border-color: color.$gray-300;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: color.$primary-600;
+    box-shadow: 0 0 0 4px color.$primary-50;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: color.$primary-600;
+    background-color: color.$primary-50;
+  }
+
+  &.checked {
+    border-color: color.$primary-600;
+    background-color: color.$primary-50;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background-image: url("/icons/Check.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.partlyChecked {
+    border-color: color.$primary-600;
+    background-color: color.$primary-50;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 2px;
+      background-image: url("/icons/Indeterminate.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.labelText {
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 20px;
+  user-select: none;
+
+  .disabled & {
+    color: #6e7587;
+  }
+}
