@@ -1,0 +1,67 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 20rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid color.$gray-300;
+  border-radius: 0.5rem;
+  color: color.$gray-900;
+  font: font.$text-md-regular;
+
+  &::placeholder {
+    color: color.$gray-300;
+  }
+
+  &:focus {
+    border-color: color.$primary-300;
+    outline: none;
+    box-shadow:
+      0 0 0 4px #f4ebff,
+      0 1px 2px 0 #1018280d;
+  }
+
+  &:disabled {
+    background-color: color.$gray-50;
+    color: color.$gray-300;
+  }
+}
+
+.inputWithIcon {
+  padding-left: 2rem;
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.label {
+  margin: 0;
+  font: font.$text-sm-medium;
+  color: color.$gray-700;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
