@@ -58,3 +58,11 @@
 .pageNumber {
   font: font.$text-sm-medium;
 }
+
+.queries {
+  display: flex;
+  gap: space.$s2;
+  margin-top: space.$s2;
+  margin-bottom: space.$s4;
+  justify-content: flex-end;
+}

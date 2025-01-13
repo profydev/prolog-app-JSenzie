@@ -17,6 +17,7 @@ const Template: StoryFn<typeof Select> = ({
   label,
   hint,
   error,
+  onChange,
 }) => (
   <div style={{ padding: 10 }}>
     <Select
@@ -25,6 +26,7 @@ const Template: StoryFn<typeof Select> = ({
       hint={hint}
       error={error}
       options={options}
+      onChange={onChange}
     ></Select>
   </div>
 );
