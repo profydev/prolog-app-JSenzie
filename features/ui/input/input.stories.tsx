@@ -11,9 +11,14 @@ export default {
   },
 } as Meta<typeof Input>;
 
-const Template: StoryFn<typeof Input> = ({ icon, label, disabled }) => (
+const Template: StoryFn<typeof Input> = ({
+  icon,
+  label,
+  disabled,
+  onChange,
+}) => (
   <div style={{ padding: 10 }}>
-    <Input icon={icon} label={label} disabled={disabled} />
+    <Input icon={icon} label={label} disabled={disabled} onChange={onChange} />
   </div>
 );
 

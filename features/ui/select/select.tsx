@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 import styles from "./select.module.scss";
 
-interface IOption {
+export interface IOption {
   value: string;
   label: string;
 }
@@ -13,6 +13,8 @@ interface SelectProps {
   label?: string;
   hint?: string;
   error?: string;
+  value?: IOption;
+  onChange: (option: IOption) => void;
 }
 
 export function Select({
@@ -21,12 +23,21 @@ export function Select({
   label,
   hint,
   error,
+  value,
+  onChange,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<IOption | undefined>(
-    options[0],
+    value || options[0],
   );
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Update selected option when value prop changes
+  useEffect(() => {
+    if (value) {
+      setSelectedOption(value);
+    }
+  }, [value]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,7 +66,7 @@ export function Select({
           data-open={isOpen}
         >
           {icon && <img src={icon} alt="icon" className={styles.icon} />}
-          {selectedOption?.label}
+          {selectedOption?.label || "Select an option"}
         </button>
 
         <img
@@ -77,6 +88,7 @@ export function Select({
                 onClick={() => {
                   setSelectedOption(option);
                   setIsOpen(false);
+                  onChange?.(option);
                 }}
               >
                 <span
