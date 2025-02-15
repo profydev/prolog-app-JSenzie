@@ -38,8 +38,9 @@ describe("Project List", () => {
             .should(
               "have.attr",
               "href",
-              `/dashboard/issues?project=${encodeURIComponent(
-                mockProjects[index].name,
+              `/dashboard/issues?project=${mockProjects[index].name.replace(
+                / /g,
+                "+",
               )}`,
             );
         });
