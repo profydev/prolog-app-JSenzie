@@ -63,7 +63,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
       <div className={styles.bottomContainer}>
-        <Link href={Routes.issues} className={styles.viewIssuesAnchor}>
+        <Link
+          href={{
+            pathname: Routes.issues,
+            query: { project: name },
+            hash: "",
+          }}
+          className={styles.viewIssuesAnchor}
+        >
           View issues
         </Link>
       </div>

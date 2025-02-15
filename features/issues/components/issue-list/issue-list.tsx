@@ -15,7 +15,8 @@ export function IssueList() {
   const page = Number(router.query.page || 1);
   const status = String(router.query.status || "");
   const level = String(router.query.level || "");
-  const project = String(router.query.project || "");
+  const project =
+    typeof router.query.project === "string" ? router.query.project : "";
   const navigateToPage = (newPage: number) => {
     router.push({
       pathname: router.pathname,
@@ -23,7 +24,7 @@ export function IssueList() {
     });
   };
 
-  const { value, handleChange } = useDebounceQuery("project");
+  const { url, handleChange } = useDebounceQuery("project");
 
   const issuesPage = useGetIssues(page, status, level, project);
   const projects = useGetProjects();
@@ -73,14 +74,14 @@ export function IssueList() {
     levelSelections[0];
 
   function setSelectedStatus(option: IOption) {
-    router.push({
+    router.replace({
       pathname: router.pathname,
       query: { ...router.query, status: option.value },
     });
   }
 
   function setSelectedLevel(option: IOption) {
-    router.push({
+    router.replace({
       pathname: router.pathname,
       query: { ...router.query, level: option.value },
     });
@@ -103,8 +104,8 @@ export function IssueList() {
         />
         <Input
           placeholder="Project Name"
-          onChange={handleChange}
-          value={value}
+          onChange={(e) => handleChange(e.target.value)}
+          value={url}
         />
       </div>
       <div className={styles.container}>

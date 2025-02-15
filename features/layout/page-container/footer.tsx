@@ -10,16 +10,16 @@ const Footer = () => {
         <div className={styles.footerInner}>
           <div className={styles.version}>Version: {packageJson.version}</div>
           <div className={styles.footerLinks}>
-            <Link className={styles.footerLink} href={"#"}>
+            <Link className={styles.footerLink} href={""}>
               Docs
             </Link>
-            <Link className={styles.footerLink} href={"#"}>
+            <Link className={styles.footerLink} href={""}>
               API
             </Link>
-            <Link className={styles.footerLink} href={"#"}>
+            <Link className={styles.footerLink} href={""}>
               Help
             </Link>
-            <Link className={styles.footerLink} href={"#"}>
+            <Link className={styles.footerLink} href={""}>
               Community
             </Link>
           </div>
