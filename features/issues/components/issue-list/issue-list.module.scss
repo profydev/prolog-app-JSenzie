@@ -1,6 +1,7 @@
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+@use "@styles/breakpoint";
 
 .container {
   background: white;
@@ -20,6 +21,11 @@
 
 .headerRow {
   border-bottom: 1px solid color.$gray-200;
+  display: none;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: table-row;
+  }
 }
 
 .headerCell {
@@ -61,8 +67,13 @@
 
 .queries {
   display: flex;
+  flex-direction: column;
   gap: space.$s2;
   margin-top: space.$s2;
   margin-bottom: space.$s4;
   justify-content: flex-end;
+
+  @media (min-width: breakpoint.$desktop) {
+    flex-direction: row;
+  }
 }

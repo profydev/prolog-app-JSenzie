@@ -1,12 +1,17 @@
 @use "@styles/color";
 @use "@styles/font";
 @use "@styles/space";
+@use "@styles/breakpoint";
 
 .inputWrapper {
   position: relative;
   display: flex;
   align-items: center;
-  width: 20rem;
+  width: 100%;
+
+  @media (min-width: breakpoint.$desktop) {
+    width: 20rem;
+  }
 }
 
 .input {

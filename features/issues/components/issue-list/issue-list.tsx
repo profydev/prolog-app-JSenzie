@@ -113,7 +113,7 @@ export function IssueList() {
           <thead>
             <tr className={styles.headerRow}>
               <th className={styles.headerCell}>Issue</th>
-              <th className={styles.headerCell}>Level</th>
+              <th className={styles.headerCell}>Status</th>
               <th className={styles.headerCell}>Events</th>
               <th className={styles.headerCell}>Users</th>
             </tr>
