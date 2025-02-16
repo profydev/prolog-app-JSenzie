@@ -1,6 +1,16 @@
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+@use "@styles/breakpoint";
+
+.row {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: table-row;
+  }
+}
 
 .row:nth-child(2n) {
   background: color.$gray-50;
@@ -10,6 +20,36 @@
   padding: space.$s4 space.$s6;
   color: color.$gray-500;
   font: font.$text-sm-regular;
+  display: none;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: table-cell;
+  }
+}
+
+.datas {
+  display: flex;
+  gap: 10px;
+  color: color.$gray-500;
+}
+
+.dataItem {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: none;
+  }
 }
 
 .issueCell {
