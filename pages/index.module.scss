@@ -3,7 +3,174 @@
 @use "@styles/space";
 @use "@styles/z-index";
 @use "@styles/breakpoint";
+@use "@styles/font";
 
+/* Base styles first */
+.contentHead {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  text-align: center;
+  align-items: center;
+  background-color: color.$gray-50;
+}
+
+.contentHead div {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 2rem;
+}
+
+.contentHead h1 {
+  font: font.$display-md-semibold;
+}
+
+.contentHead p {
+  font: font.$text-md-regular;
+  color: color.$gray-500;
+}
+
+.contentHead .imageWrapper {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.contentHead img {
+  width: 100%;
+}
+
+/* Order based on increasing specificity */
+.socialProofSection {
+  padding: 6rem 4rem;
+  background-color: color.$gray-50;
+}
+
+.testimonialSection {
+  padding: 6rem 2rem;
+  gap: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonialSection h3 {
+  color: color.$primary-900;
+  font: font.$text-md-medium;
+  margin: 0;
+}
+
+.testimonialSection img {
+  border-radius: 50%;
+}
+
+.socialProofSection div {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.testimonialSection .testimonialTitles {
+  gap: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+}
+
+.socialProofSection div p {
+  font: font.$text-md-medium;
+  text-align: center;
+  color: color.$gray-500;
+}
+
+.testimonialSection .testimonialTitles h1 {
+  font: font.$display-md-semibold;
+  color: color.$gray-900;
+}
+
+.testimonialSection .testimonialTitles p {
+  color: color.$gray-500;
+}
+
+.socialProofSection div .socialProofs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.testimonialSection .testimonials {
+  gap: 4rem;
+  display: flex;
+  flex-flow: row wrap;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialProofSection div .socialProofs img {
+  padding: 0 1rem;
+}
+
+.testimonialSection .testimonials .testimonialCard {
+  text-align: center;
+  border-radius: 16px;
+  flex-direction: column;
+  background-color: color.$primary-50;
+  padding: 2.5rem 1.5rem;
+  justify-content: space-between;
+  max-width: 24rem;
+}
+
+.testimonialSection .testimonials .testimonialCard .testimonialTitle {
+  color: color.$primary-700;
+  font: font.$text-sm-semibold;
+}
+
+.testimonialSection .testimonials .testimonialCard .testimonialText {
+  font: font.$display-xs-medium;
+  color: color.$primary-900;
+}
+
+.testimonialSection .testimonials .testimonialCard .testimonialUser {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.testimonialSection .testimonials .testimonialCard .testimonialUser div {
+  gap: 0.25rem;
+}
+
+.testimonialSection .testimonials .testimonialCard .testimonialUser p {
+  font: font.$text-sm-regular;
+  margin: 0;
+}
+
+.testimonialSection .testimonials .testimonialCard .testimonialUser img {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+}
+
+.testimonialSection .testimonials .testimonialCard:nth-child(even) {
+  background-color: color.$gray-50;
+}
+
+.testimonialSection
+  .testimonials
+  .testimonialCard:nth-child(even)
+  .testimonialText {
+  color: color.$gray-900;
+}
+
+.testimonialSection .testimonials .testimonialCard:nth-child(even) h3 {
+  color: color.$gray-900;
+}
+
+/* Header and navigation */
 .header {
   position: relative;
   width: 100%;
@@ -20,13 +187,15 @@
 .links {
   display: none;
   gap: 2rem;
+}
 
-  a {
-    color: color.$gray-500;
-    text-decoration: none;
-  }
+.links a {
+  color: color.$gray-500;
+  text-decoration: none;
+}
 
-  @media (min-width: breakpoint.$desktop) {
+@media (min-width: breakpoint.$desktop) {
+  .links {
     display: flex;
   }
 }
@@ -35,11 +204,11 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
 
-  a {
-    color: color.$gray-500;
-    text-decoration: none;
-  }
+.sideLinks a {
+  color: color.$gray-500;
+  text-decoration: none;
 }
 
 .links a:visited,
@@ -56,18 +225,20 @@
   text-decoration: none;
   color: white;
   display: none;
+}
 
-  &:visited {
-    color: white;
-  }
+.link:visited {
+  color: white;
+}
 
-  @media (min-width: breakpoint.$desktop) {
+@media (min-width: breakpoint.$desktop) {
+  .link {
     display: block;
   }
 }
 
 .contactButton {
-  position: absolute;
+  position: fixed;
   bottom: 2.5rem;
   right: 2.5rem;
   padding: 1rem;
@@ -76,14 +247,18 @@
   box-shadow: 0 1px 2px rgb(16 24 40 / 5%);
   border: none;
   cursor: pointer;
+}
 
-  &:hover {
-    background: #6941c6;
-  }
+.contactButton:hover {
+  background: #6941c6;
 }
 
 .menuButton {
-  @media (min-width: breakpoint.$desktop) {
+  /* Default styles */
+}
+
+@media (min-width: breakpoint.$desktop) {
+  .menuButton {
     display: none;
   }
 }
@@ -110,12 +285,14 @@
   transform: translateX(-100%);
   transition: transform 300ms;
   justify-content: space-between;
+}
 
-  &.isMobileMenuOpen {
-    transform: translateX(0);
-  }
+.nav.isMobileMenuOpen {
+  transform: translateX(0);
+}
 
-  @media (min-width: breakpoint.$desktop) {
+@media (min-width: breakpoint.$desktop) {
+  .nav {
     display: none;
   }
 }
@@ -133,16 +310,18 @@
   transition:
     opacity 300ms,
     transform 0s 300ms;
+}
 
-  &.isMobileMenuOpen {
-    opacity: 0.6;
-    transform: translateX(0);
-    transition:
-      opacity 300ms,
-      transform 0s 0s;
-  }
+.menuOverlay.isMobileMenuOpen {
+  opacity: 0.6;
+  transform: translateX(0);
+  transition:
+    opacity 300ms,
+    transform 0s 0s;
+}
 
-  @media (min-width: breakpoint.$desktop) {
+@media (min-width: breakpoint.$desktop) {
+  .menuOverlay {
     display: none;
   }
 }
