@@ -170,9 +170,8 @@
   color: color.$gray-900;
 }
 
-/* Header and navigation */
 .header {
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 80px;
   padding: 0 2rem;
@@ -181,7 +180,7 @@
   justify-content: space-between;
   align-items: center;
   background: white;
-  z-index: z-index.$header;
+  z-index: 9999;
 }
 
 .links {
@@ -237,6 +236,45 @@
   }
 }
 
+.contactModal {
+  text-align: center;
+  display: none;
+  position: fixed;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  gap: 2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 25rem;
+  box-shadow:
+    0 8px 8px -4px rgb(16 18 28 / 4%),
+    0 20px 24px -4px rgb(16 18 28 / 10%);
+}
+
+.contactModalOpen {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactModal .modalButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.modalButton {
+  flex: 1;
+}
+
+.modalButton button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .contactButton {
   position: fixed;
   bottom: 2.5rem;
@@ -277,7 +315,7 @@
   display: flex;
   flex-direction: column;
   background: white;
-  z-index: z-index.$header;
+  z-index: 9999;
   transform: translateX(-100%);
   transition: transform 300ms;
   justify-content: space-between;
@@ -300,7 +338,6 @@
   width: 100%;
   height: 100vh;
   background-color: color.$gray-700;
-  z-index: z-index.$header -1;
   transform: translateX(100%);
   opacity: 0;
   transition:
@@ -310,6 +347,30 @@
 
 .menuOverlay.isMobileMenuOpen {
   opacity: 0.6;
+  z-index: 9998;
+  transform: translateX(0);
+  transition:
+    opacity 300ms,
+    transform 0s 0s;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: color.$gray-700;
+  transform: translateX(100%);
+  opacity: 0;
+  transition:
+    opacity 300ms,
+    transform 0s 300ms;
+}
+
+.modalOverlay.contactModalOverlayActive {
+  opacity: 0.6;
+  z-index: 9998;
   transform: translateX(0);
   transition:
     opacity 300ms,
