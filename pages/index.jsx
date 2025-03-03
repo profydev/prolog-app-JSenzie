@@ -76,7 +76,7 @@ const IssuesPage = () => {
               </div>
               <div className={styles.imageWrapper}>
                 <img
-                  alt="image of laptop"
+                  alt="Image of laptop"
                   src={
                     "https://prolog-api.profy.dev" + data.sections[0].image.src
                   }
