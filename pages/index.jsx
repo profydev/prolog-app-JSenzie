@@ -1,4 +1,4 @@
-import { Button } from "@features/ui";
+import { Button, ButtonColor } from "@features/ui";
 import styles from "./index.module.scss";
 import { useState } from "react";
 import classNames from "classnames";
@@ -7,6 +7,7 @@ import { useGetContent } from "./api/use-get-content";
 
 const IssuesPage = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const { data } = useGetContent();
 
   return (
@@ -42,6 +43,12 @@ const IssuesPage = () => {
           isMobileMenuOpen && styles.isMobileMenuOpen,
         )}
       />
+      <div
+        className={classNames(
+          styles.modalOverlay,
+          contactModalOpen && styles.contactModalOverlayActive,
+        )}
+      />
       <nav
         className={classNames(
           styles.nav,
@@ -69,6 +76,7 @@ const IssuesPage = () => {
               </div>
               <div className={styles.imageWrapper}>
                 <img
+                  alt="image of laptop"
                   src={
                     "https://prolog-api.profy.dev" + data.sections[0].image.src
                   }
@@ -82,6 +90,7 @@ const IssuesPage = () => {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   {data.sections[1].companies.map((item) => (
                     <img
+                      alt="company logo"
                       key={item.name}
                       src={"https://prolog-api.profy.dev" + item.logo}
                     />
@@ -104,6 +113,7 @@ const IssuesPage = () => {
                     <div className={styles.testimonialUser}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
+                        alt="user image"
                         src={
                           "https://prolog-api.profy.dev" + item.userImage.src
                         }
@@ -125,15 +135,37 @@ const IssuesPage = () => {
 
       <button
         className={styles.contactButton}
-        onClick={() =>
-          alert(
-            "Implement this in Challenge 2 - Modal:\n\nhttps://profy.dev/rjs-challenge-modal",
-          )
-        }
+        onClick={() => setContactModalOpen(true)}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/message.svg" alt="Contact" />
       </button>
+      <div
+        className={classNames(
+          styles.contactModal,
+          contactModalOpen && styles.contactModalOpen,
+        )}
+      >
+        <div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/mail.svg" alt="mail logo" />
+          <h3>Contact Us Via Email</h3>
+          <p>
+            Any questions? Send us an email at prolog@profy.dev. We usually
+            answer within 24 hours.
+          </p>
+        </div>
+        <div className={styles.modalButtons}>
+          <Button
+            color={ButtonColor.gray}
+            onClick={() => setContactModalOpen(false)}
+            className={styles.modalButton}
+          >
+            Cancel
+          </Button>
+          <Button className={styles.modalButton}>Send us an email</Button>
+        </div>
+      </div>
     </div>
   );
 };
