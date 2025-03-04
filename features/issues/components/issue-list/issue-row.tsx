@@ -28,41 +28,50 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
   };
 
   useEffect(() => {
+    // Set the initial window size on mount
+    setWindowWidth(window.innerWidth);
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Desktop version
+  if (windowSize >= 1024) {
+    return (
+      <tr className={styles.row}>
+        <td className={styles.issueCell}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className={styles.languageIcon}
+            src={`/icons/${projectLanguage}.svg`}
+            alt={projectLanguage}
+          />
+          <div>
+            <div className={styles.errorTypeAndMessage}>
+              <span className={styles.errorType}>{name}:&nbsp;</span>
+              {message}
+            </div>
+            <div>{firstLineOfStackTrace}</div>
+          </div>
+        </td>
+
+        <td className={styles.cell}>
+          <Badge color={levelColors[level]} size={BadgeSize.sm}>
+            {capitalize(level)}
+          </Badge>
+        </td>
+        <td className={styles.cell}>{numEvents}</td>
+        <td className={styles.cell}>{numUsers}</td>
+      </tr>
+    );
+  }
+
   return (
     <tr className={styles.row}>
-      {windowSize >= 1024 ? (
-        <>
-          <td className={styles.issueCell}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className={styles.languageIcon}
-              src={`/icons/${projectLanguage}.svg`}
-              alt={projectLanguage}
-            />
-            <div>
-              <div className={styles.errorTypeAndMessage}>
-                <span className={styles.errorType}>{name}:&nbsp;</span>
-                {message}
-              </div>
-              <div>{firstLineOfStackTrace}</div>
-            </div>
-          </td>
-
-          <td className={styles.cell}>
-            <Badge color={levelColors[level]} size={BadgeSize.sm}>
-              {capitalize(level)}
-            </Badge>
-          </td>
-          <td className={styles.cell}>{numEvents}</td>
-          <td className={styles.cell}>{numUsers}</td>
-        </>
-      ) : (
+      <td className={styles.mobileTd} colSpan={4}>
         <div className={styles.mobileCell}>
           <div className={styles.issueCell}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={styles.languageIcon}
               src={`/icons/${projectLanguage}.svg`}
@@ -95,7 +104,7 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
             </div>
           </div>
         </div>
-      )}
+      </td>
     </tr>
   );
 }
