@@ -109,7 +109,10 @@ export function IssueList() {
         />
       </div>
       <div className={styles.container}>
-        <table className={styles.table}>
+        <table
+          className={styles.table}
+          key={`issues-table-${items?.length || 0}`}
+        >
           <thead>
             <tr className={styles.headerRow}>
               <th className={styles.headerCell}>Issue</th>
